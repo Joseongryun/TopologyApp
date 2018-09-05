@@ -13,50 +13,127 @@
 </head>
 
 <body>
-  <nav class="nav">
-    <div class="nav-brand">
-      Topology App
-    </div>
-  </nav>
-  <div class="map__list__cover left__list topo__list__cover">
-    <div class="topo__header">
-      Map List
-    </div>
-    <ul class="map__list topo__list">
-      <li class="map__list__el">
-        <span class="map__image"></span>
-        <span class="map__name"></span>
-        <span class="right__direction"></span>
-      </li>
-    </ul>
-    <button class="btn btn__basic">
-      Add Map...
-    </button>
-  </div>
-  <div class="topology__map" id="topology__map"></div>
-  <div class="right__list">
-    <div class="mode__list__cover topo__list__cover">
-      <div class="topo__header">
-        Mode
+  <div class="wrapper">
+    <nav class="nav">
+      <div class="nav__brand">
+        <a href="./index.html">Topology App</a>
       </div>
-      <div class="mode__list">
-        <div class="mode__list__el"></div>
-        <div class="mode__list__el"></div>
-        <div class="mode__list__el"></div>
-        <div class="mode__list__el"></div>
-      </div>
-    </div>
-    <div class="node__list__cover topo__list__cover">
+    </nav>
+    <div class="topo__flex">
+      <div class="map__list__cover left__list topo__list__cover">
         <div class="topo__header">
-          Node
+          Map List
         </div>
-        <div class="node__list topo__list">
-          <div class="node__list__el">
-            <span class="node__image"></span>
-            <span class="node__name"></span>
+        <ul class="map__list topo__list">
+          <li class="list__el">
+            <span class="map__image list__image"></span>
+            <span class="map__name">map 1</span>
+            <span class="right__direction"></span>
+          </li>
+          <li class="list__el">
+            <span class="map__image list__image"></span>
+            <span class="map__name">map 1</span>
+            <span class="right__direction"></span>
+          </li>
+          <li class="list__el">
+            <span class="map__image list__image"></span>
+            <span class="map__name">map 1</span>
+            <span class="right__direction"></span>
+          </li>
+          <li class="list__el">
+            <span class="map__image list__image"></span>
+            <span class="map__name">map 1</span>
+            <span class="right__direction"></span>
+          </li>
+        </ul>
+        <button class="btn__basic">
+          Add Map...
+        </button>
+      </div>
+      <div class="topology__map" id="topology__map"></div>
+      <div class="right__list">
+        <div class="mode__list__cover topo__list__cover">
+          <div class="topo__header">
+            Mode
+          </div>
+          <div class="mode__list">
+            <div class="mode__list__el active" id="select" title="
+            Select element"></div>
+            <div class="mode__list__el" id="add" title="Add node"></div>
+            <div class="mode__list__el" id="line" title="Add path"></div>
+            <div class="mode__list__el" id="delete" title="Delete Element"></div>
+          </div>
+        </div>
+        <div class="element__list__cover topo__list__cover">
+          <div class="topo__header">
+            Element List
+          </div>
+          <div class="node__list">
+            <div class="topo__sub__header">
+              Node
+            </div>
+            <ul class="element__list topo__list__small">
+              <li class="list__el">
+                <span class="node__image list__image"></span>
+                <span class="node__name">node 1</span>
+              </li>
+              <li class="list__el">
+                <span class="node__image list__image"></span>
+                <span class="node__name">node 1</span>
+              </li>
+              <li class="list__el">
+                <span class="node__image list__image"></span>
+                <span class="node__name">node 1</span>
+              </li>
+              <li class="list__el">
+                <span class="node__image list__image"></span>
+                <span class="node__name">node 1</span>
+              </li>
+              <li class="list__el">
+                <span class="node__image list__image"></span>
+                <span class="node__name">node 1</span>
+              </li>
+            </ul>
+          </div>
+          <div class="path__list">
+            <div class="topo__sub__header">
+              Path
+            </div>
+            <ul class="element__list topo__list__small">
+              <li class="list__el">
+                <span class="path__image list__image"></span>
+                <span class="path__name">path</span>
+              </li>
+
+              <li class="list__el">
+                <span class="path__image list__image"></span>
+                <span class="path__name">path</span>
+              </li>
+
+              <li class="list__el">
+                <span class="path__image list__image"></span>
+                <span class="path__name">path</span>
+              </li>
+
+              <li class="list__el">
+                <span class="path__image list__image"></span>
+                <span class="path__name">path</span>
+              </li>
+
+              <li class="list__el">
+                <span class="path__image list__image"></span>
+                <span class="path__name">path</span>
+              </li>
+
+              <li class="list__el">
+                <span class="path__image list__image"></span>
+                <span class="path__name">path</span>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
+    </div>
   </div>
 </body>
 
