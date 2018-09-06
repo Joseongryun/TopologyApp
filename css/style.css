@@ -54,21 +54,29 @@ a {
 }
 
 nav {
-  height: 60px;
-  line-height: 60px;
+  height: 65px;
+  line-height: 65px;
   background-color: #282B30;
-  padding-left: 20px;
+}
+
+.nav__brand {
+  margin-left: 20px;
 }
 
 .nav__brand a {
-  font-size: 16px;
+  font-size: 20px;
   color: #fff;
   cursor: pointer;
+  text-decoration: none;
+}
+
+.nav__brand a:hover {
+  color: rgb(201, 201, 201);
 }
 
 .topo__flex {
   width: 100%;
-  height: calc(100% - 60px);
+  height: calc(100% - 65px);
   display: flex;
   justify-content: space-around;
   overflow-x: auto;
@@ -109,12 +117,34 @@ nav {
 .topo__header {
   font-weight: 100;
   font-size: 26px;
+  margin-bottom: 10px;
 }
 
 .list__el {
   height: 60px;
   line-height: 60px;
   cursor: pointer;
+  position: relative;
+}
+
+.list__el.active {
+  background-color: #eaeaea;
+  border: 1px solid #bdbdbd;
+}
+
+.list__el>i {
+  color: #cccccc;
+  font-size: 25px;
+  position: absolute;
+}
+
+.list__el>i {
+  right: 10px;
+  top: 18px;
+}
+
+.list__el>i:hover {
+  color: red;
 }
 
 .list__el:hover {
@@ -176,11 +206,6 @@ nav {
   font-size: 17px;
   margin: 15px 10px;
 }
-
-.path__list {
-  margin-top: 45px;
-}
-
 .topo__list {
   max-height: 600px;
   overflow-y: auto;
@@ -191,16 +216,15 @@ nav {
   overflow-y: auto;
 }
 
-.mode__list{
+.mode__list {
   display: flex;
   height: 60px;
   justify-content: space-around;
   align-items: center;
   margin-top: 10px;
-
 }
 
-.mode__list__el{
+.mode__list__el {
   width: 50px;
   height: 50px;
   background-size: 45%;
@@ -210,24 +234,34 @@ nav {
   border-radius: 5px;
 }
 
-.mode__list__el:hover{
+.mode__list__el:hover {
   background-color: #eaeaea;
 }
 
-.mode__list__el.active{
+.mode__list__el.active {
   background-color: #eaeaea;
   border: 1px solid #bdbdbd;
 }
 
-.mode__list__el#select{
+.mode__list__el#select {
   background-image: url(../image/icon/select.png);
 }
-.mode__list__el#add{
+
+.mode__list__el#add {
   background-image: url(../image/icon/node.png);
 }
-.mode__list__el#line{
+
+.mode__list__el#line {
   background-image: url(../image/icon/path.png);
 }
-.mode__list__el#delete{
+
+.mode__list__el#delete {
   background-image: url(../image/icon/delete.png);
+}
+
+.img__preview__cover {
+  max-width: 380px;
+  max-height: 380px;
+  margin: 0 auto;
+  overflow: auto;
 }

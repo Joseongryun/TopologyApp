@@ -6,10 +6,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Topology Map</title>
-  <script src="./js/jquery-3.3.1.min.js"></script>
-  <script src="./js/d3.v3.min.js"></script>
+  <script src="./js/default/jquery-3.3.1.min.js"></script>
+  <script src="./js/default/popper.min.js"></script>
+  <script src="./js/default/bootstrap.min.js"></script>
+  <script src="./js/default/d3.v3.min.js"></script>
+  <script src="./js/default/csi.min.js"></script>
+  <script src="./js/api/map.js"></script>
+  <script src="./js/api/node.js"></script>
+  <script src="./js/api/path.js"></script>
+  <script src="./js/script.js"></script>
   <script src="./js/topology.js"></script>
+  <script src="./js/apiTrigger.js"></script>
+  <script src="./js/config.js"></script>
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/font-awesome.min.css">
   <link rel="stylesheet" href="./css/style.css">
+  <script>
+    $(function () {
+      $('#add__map__modal').load('./modal/addmapModal.html');
+    })
+  </script>
 </head>
 
 <body>
@@ -25,28 +41,9 @@
           Map List
         </div>
         <ul class="map__list topo__list">
-          <li class="list__el">
-            <span class="map__image list__image"></span>
-            <span class="map__name">map 1</span>
-            <span class="right__direction"></span>
-          </li>
-          <li class="list__el">
-            <span class="map__image list__image"></span>
-            <span class="map__name">map 1</span>
-            <span class="right__direction"></span>
-          </li>
-          <li class="list__el">
-            <span class="map__image list__image"></span>
-            <span class="map__name">map 1</span>
-            <span class="right__direction"></span>
-          </li>
-          <li class="list__el">
-            <span class="map__image list__image"></span>
-            <span class="map__name">map 1</span>
-            <span class="right__direction"></span>
-          </li>
+
         </ul>
-        <button class="btn__basic">
+        <button class="btn__basic" data-toggle="modal" data-target="#add__map__modal">
           Add Map...
         </button>
       </div>
@@ -65,75 +62,30 @@
           </div>
         </div>
         <div class="element__list__cover topo__list__cover">
-          <div class="topo__header">
+          <div>
             Element List
           </div>
-          <div class="node__list">
+          <div>
             <div class="topo__sub__header">
               Node
             </div>
-            <ul class="element__list topo__list__small">
-              <li class="list__el">
-                <span class="node__image list__image"></span>
-                <span class="node__name">node 1</span>
-              </li>
-              <li class="list__el">
-                <span class="node__image list__image"></span>
-                <span class="node__name">node 1</span>
-              </li>
-              <li class="list__el">
-                <span class="node__image list__image"></span>
-                <span class="node__name">node 1</span>
-              </li>
-              <li class="list__el">
-                <span class="node__image list__image"></span>
-                <span class="node__name">node 1</span>
-              </li>
-              <li class="list__el">
-                <span class="node__image list__image"></span>
-                <span class="node__name">node 1</span>
-              </li>
+            <ul class="node__list element__list topo__list__small">
+
             </ul>
           </div>
-          <div class="path__list">
+          <div style="margin-top: 45px;">
             <div class="topo__sub__header">
               Path
             </div>
-            <ul class="element__list topo__list__small">
-              <li class="list__el">
-                <span class="path__image list__image"></span>
-                <span class="path__name">path</span>
-              </li>
+            <ul class="path__list element__list topo__list__small">
 
-              <li class="list__el">
-                <span class="path__image list__image"></span>
-                <span class="path__name">path</span>
-              </li>
-
-              <li class="list__el">
-                <span class="path__image list__image"></span>
-                <span class="path__name">path</span>
-              </li>
-
-              <li class="list__el">
-                <span class="path__image list__image"></span>
-                <span class="path__name">path</span>
-              </li>
-
-              <li class="list__el">
-                <span class="path__image list__image"></span>
-                <span class="path__name">path</span>
-              </li>
-
-              <li class="list__el">
-                <span class="path__image list__image"></span>
-                <span class="path__name">path</span>
-              </li>
             </ul>
           </div>
         </div>
       </div>
     </div>
+  </div>
+  <div class="modal fade" id="add__map__modal">
   </div>
 </body>
 
