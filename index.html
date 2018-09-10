@@ -6,25 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Topology Map</title>
+  <script src="./js/default/d3.v3.min.js"></script>
   <script src="./js/default/jquery-3.3.1.min.js"></script>
   <script src="./js/default/popper.min.js"></script>
   <script src="./js/default/bootstrap.min.js"></script>
-  <script src="./js/default/d3.v3.min.js"></script>
-  <script src="./js/default/csi.min.js"></script>
   <script src="./js/api/map.js"></script>
   <script src="./js/api/node.js"></script>
   <script src="./js/api/path.js"></script>
   <script src="./js/script.js"></script>
-  <script src="./js/topology.js"></script>
-  <script src="./js/apiTrigger.js"></script>
   <script src="./js/config.js"></script>
   <link rel="stylesheet" href="./css/bootstrap.min.css">
   <link rel="stylesheet" href="./css/font-awesome.min.css">
   <link rel="stylesheet" href="./css/style.css">
   <script>
-    $(function () {
-      $('#add__map__modal').load('./modal/addmapModal.html');
-    })
   </script>
 </head>
 
@@ -54,11 +48,10 @@
             Mode
           </div>
           <div class="mode__list">
-            <div class="mode__list__el active" id="select" title="
-            Select element"></div>
-            <div class="mode__list__el" id="add" title="Add node"></div>
-            <div class="mode__list__el" id="line" title="Add path"></div>
-            <div class="mode__list__el" id="delete" title="Delete Element"></div>
+            <div class="mode__list__el active" id="select" title="Select element" onclick="modeChange(this.id)"></div>
+            <div class="mode__list__el" id="add" title="Add node" onclick="modeChange(this.id)"></div>
+            <div class="mode__list__el" id="line" title="Add path" onclick="modeChange(this.id)"></div>
+            <div class="mode__list__el" id="delete" title="Delete Element" onclick="modeChange(this.id)"></div>
           </div>
         </div>
         <div class="element__list__cover topo__list__cover">
@@ -85,7 +78,138 @@
       </div>
     </div>
   </div>
-  <div class="modal fade" id="add__map__modal">
+  <div class="modal fade" id="add__map__modal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Add Map</h4>
+          <button type="button" class="close add__map__close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form action="" enctype="multipart/form-data" id="add__map__form">
+            <div class="form-group">
+              <label for="m_name">Map name</label>
+              <input type="text" name="m_name" id="m_name" class="form-control" placeholder="" aria-describedby="helpId">
+              <small id="helpId" class="text-muted">Input the topology map name</small>
+            </div>
+            <div class="form-group">
+              <label for="m_image">Model image</label>
+              <input type="file" name="m_image" id="m_image" class="form-control-file" aria-describedby="helpId">
+              <small id="helpId" class="text-muted">Input the topology map background image</small>
+            </div>
+          </form>
+          <div class="img__preview__cover">
+            <img src="" alt="" id="img__preview">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" id="add__map__submit">Submit</button>
+          <button type="button" class="btn btn-danger add__map__close" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="add__node__modal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content" @click.stop>
+        <div class="modal-header">
+          <h4 class="modal-title">Add Node</h4>
+          <button type="button" class="close add__node__close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form action="" enctype="multipart/form-data" id="add__node__form">
+            <div class="form-group">
+              <label for="n_ip">Node ip address</label>
+              <input type="text" name="n_ip" id="n_ip" class="form-control" placeholder="" aria-describedby="helpId">
+              <small id="helpId" class="text-muted">Input the node ip address</small>
+            </div>
+            <div class="form-group">
+              <label for="n_hostname">Node hostname</label>
+              <input type="text" name="n_hostname" id="n_hostname" class="form-control" placeholder="" aria-describedby="helpId">
+              <small id="helpId" class="text-muted">Input the node hostname</small>
+            </div>
+            <div class="form-group ">
+              <div class="half__input">
+                <label for="n_status">Node status</label>
+                <input type="text" name="n_status" id="n_status" value="safe" class="form-control" placeholder=""
+                  aria-describedby="helpId" disabled>
+                <small id="helpId" class="text-muted">Input the node status</small>
+              </div>
+              <div class="half__input">
+                <label for="n_kinds">Node kinds</label>
+                <input type="text" name="n_kinds" id="n_kinds" class="form-control" placeholder="" aria-describedby="helpId">
+                <small id="helpId" class="text-muted">Input the node kinds</small>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="half__input">
+                <label for="n_x">Node X coordinate</label>
+                <input type="text" name="n_x" id="n_x" class="form-control" placeholder="" aria-describedby="helpId"
+                  disabled>
+                <small id="helpId" class="text-muted">node x coordinate</small>
+              </div>
+              <div class="half__input">
+                <label for="n_y">Node Y coordinate</label>
+                <input type="text" name="n_y" id="n_y" class="form-control" placeholder="" aria-describedby="helpId"
+                  disabled>
+                <small id="helpId" class="text-muted">node y coordinate</small>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="n_image">Node image</label>
+              <input type="file" name="n_image" id="n_image" class="form-control-file" aria-describedby="helpId">
+              <small id="helpId" class="text-muted">Input the node image</small>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" id="add__node__submit">Submit</button>
+          <button type="button" class="btn btn-danger add__node__close" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="add__path__modal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Add Path</h4>
+          <button type="button" class="close add__path__close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form action="" id="add__path__form">
+            <div class="form-group"><label for="p_option">Path option</label>
+              <input type="text" name="p_option" id="p_option" class="form-control" placeholder="" aria-describedby="helpId">
+              <small id="helpId" class="text-muted">Input the path option ex) solid, dotted, dashed...</small>
+            </div>
+            <div class="form-group">
+              <label for="p_color">Path color</label>
+              <input type="text" name="p_color" id="p_color" class="form-control" placeholder="" aria-describedby="helpId">
+              <small id="helpId" class="text-muted">Input the path color ex) black, red, pink ...</small>
+            </div>
+            <div class="form-group">
+              <div class="half__input">
+                <label for="p_start">Start Node id</label>
+                <input type="text" name="p_start" id="p_start" class="form-control" placeholder="" aria-describedby="helpId">
+                <small id="helpId" class="text-muted">Start Node Id</small>
+              </div>
+              <div class="half__input"><label for="p_end">End Node id</label>
+                <input type="text" name="p_end" id="p_end" class="form-control" placeholder="" aria-describedby="helpId">
+                <small id="helpId" class="text-muted">End Node Id</small>
+
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" id="add__path__submit">Submit</button>
+          <button type="button" class="btn btn-danger add__path__close" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="custom_menu">
+    hello
   </div>
 </body>
 

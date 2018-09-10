@@ -265,3 +265,19 @@ nav {
   margin: 0 auto;
   overflow: auto;
 }
+
+.node text {
+  font: 10px sans-serif;
+  pointer-events: none;
+}
+
+.dragging text {
+  font-weight: 600;
+  fill: darkseagreen;
+}
+
+.half__input {
+  width: 45%;
+  float: left;
+  margin-right: 5%;
+}
